@@ -10,7 +10,7 @@ const server = new McpServer({
 })
 
 for (const tool of Object.keys(tools)) {
-  const { name, description, input, query } = tools[tool as keyof typeof tools]
+  const { name, description, input, query, annotations: _annotations } = tools[tool as keyof typeof tools]
   server.tool(
     name,
     description,
