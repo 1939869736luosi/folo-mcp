@@ -3,19 +3,25 @@
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@10.7.0",
-  "description": "MCP server for Folo",
+  "description": "MCP server for Folo — 12 tools for entries, subscriptions, collections, feeds and user profile",
   "author": {
-    "name": "Stephen Zhou",
-    "url": "https://hyoban.cc",
-    "email": "hi@hyoban.cc"
+    "name": "1939869736luosi",
+    "url": "https://github.com/1939869736luosi"
   },
+  "contributors": [
+    {
+      "name": "Stephen Zhou",
+      "url": "https://hyoban.cc",
+      "email": "hi@hyoban.cc"
+    }
+  ],
   "license": "MIT",
-  "homepage": "https://github.com/hyoban/folo-mcp#readme",
+  "homepage": "https://github.com/1939869736luosi/folo-mcp#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyoban/folo-mcp.git"
+    "url": "git+https://github.com/1939869736luosi/folo-mcp.git"
   },
-  "bugs": "https://github.com/hyoban/folo-mcp/issues",
+  "bugs": "https://github.com/1939869736luosi/folo-mcp/issues",
   "keywords": [
     "mcp",
     "Folo"

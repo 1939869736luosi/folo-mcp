@@ -1,33 +1,56 @@
 # folo-mcp
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+MCP server for [Folo](https://folo.is) (RSS reader) — 12 tools for managing entries, subscriptions, collections, feeds and user profile.
 
-MCP server for [Folo](https://github.com/RSSNext/Folo)
+Based on [hyoban/folo-mcp](https://github.com/hyoban/folo-mcp), extended with 7 additional tools, MCP spec compliance (annotations, detailed descriptions, isError handling), and robustness improvements (30s timeout, non-JSON response handling).
 
-## Usage
+## Tools
 
-Set `FOLO_SESSION_TOKEN` environment variable to your Folo session token.
+| Tool | Description | Type |
+|------|------------|------|
+| `entry_list` | Get a list of entries (articles) | Read |
+| `get_entry` | Get full content of a specific entry | Read |
+| `subscription_list` | List RSS subscriptions | Read |
+| `unread_count` | Get unread count grouped by feed | Read |
+| `feed_info` | Get feed info by ID or URL | Read |
+| `discover_feed` | Discover RSS feeds by keyword or URL | Read |
+| `get_profile` | Get user profile and subscription limits | Read |
+| `mark_read` | Mark entries as read | Write |
+| `star_entry` | Star (collect) an entry | Write |
+| `unstar_entry` | Unstar (remove from collection) | Write |
+| `subscribe` | Subscribe to a new RSS feed | Write |
+| `unsubscribe` | Unsubscribe from a feed | Write |
 
-```bash
-npx folo-mcp -y
+## Setup
+
+### 1. Get your session token
+
+1. Open [app.folo.is](https://app.folo.is) in Chrome
+2. Open DevTools → Application → Cookies
+3. Copy the value of `__Secure-better-auth.session_token`
+
+> **Note**: Session tokens expire periodically (typically 7-30 days). You'll need to refresh when API calls return auth errors.
+
+### 2. Configure MCP
+
+Add to your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "folo-mcp": {
+      "command": "npx",
+      "args": ["-y", "github:1939869736luosi/folo-mcp"],
+      "env": {
+        "FOLO_SESSION_TOKEN": "<your-token-here>"
+      }
+    }
+  }
+}
 ```
 
-Configuration for [ChatWise](https://chatwise.app)
+## License
 
-![CleanShot 2025-03-29 at 23 05 22@2x](https://github.com/user-attachments/assets/91b1841c-e556-4669-b68f-8afd51ce358c)
+MIT — see [LICENSE.md](LICENSE.md)
 
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/hyoban/sponsors">
-    <img src="https://raw.githubusercontent.com/hyoban/sponsors/main/sponsorkit/sponsors.svg" />
-  </a>
-</p>
-
-<!-- Badges -->
-
-[npm-version-src]: https://img.shields.io/npm/v/folo-mcp?style=flat&colorA=080f12&colorB=1fa669
-[npm-version-href]: https://npmjs.com/package/folo-mcp
-[npm-downloads-src]: https://img.shields.io/npm/dm/folo-mcp?style=flat&colorA=080f12&colorB=1fa669
-[npm-downloads-href]: https://npmjs.com/package/folo-mcp
+Original work by [Stephen Zhou (hyoban)](https://github.com/hyoban). Extended by [1939869736luosi](https://github.com/1939869736luosi).
